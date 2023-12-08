@@ -2,21 +2,29 @@ console.log ("Baradero Knits Test");
 
 const mediasAngoraMujer = {
     nombre: "Medias Angora Mujer",
+    id: 1,
     categoria: "Medias",
     precio: 50,
     color: "beige",
 }
 const mediasAngoraHombre = {
     nombre: "Medias Angora Hombre",
+    id: 2,
     categoria: "Medias",
     precio: 45,
     color: "beige",
 }
 
-const mediasAngoraBaby = ("Medias Angora Baby");
-const saquitoCrochet = ("Saquito al Crochet");
+const mediasAngoraBaby = {
+    nombre: "Medias Angora Baby",
+    id: 3,
+    categoria: "Medias",
+    precio: 35,
+    color: "beige",
+}
+
  
-const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby, saquitoCrochet];
+const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby];
 const arrayCarrito = [];
 
 console.log (mediasAngoraMujer["precio"]);

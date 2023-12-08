@@ -2,35 +2,36 @@ console.log ("Baradero Knits Test");
 
 const mediasAngoraMujer = {
     nombre: "Medias Angora Mujer",
+    id: "M1",
     categoria: "Medias",
     precio: 50,
     color: "beige",
 }
 const mediasAngoraHombre = {
     nombre: "Medias Angora Hombre",
+    id: "M2",
     categoria: "Medias",
     precio: 45,
     color: "beige",
 }
 
-const mediasAngoraBaby = ("Medias Angora Baby");
-const saquitoCrochet = ("Saquito al Crochet");
+const mediasAngoraBaby = {
+    nombre: "Medias Angora Baby",
+    id: "M3",
+    categoria: "Medias",
+    precio: 35,
+    color: "beige",
+}
+
  
-const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby, saquitoCrochet];
+const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby];
 const arrayCarrito = [];
 
-console.log (mediasAngoraMujer["precio"]);
-console.log (mediasAngoraHombre.precio);
-console.log ((mediasAngoraMujer.precio) + (mediasAngoraHombre.precio));
-
-/* console.log (arrayCatalogo);
-console.log(arrayCatalogo[2]);
-console.log (arrayCatalogo.length); */
 
 // 1 - MOSTRAR CATALOGO AL USUARIO
 
 function mostrarCatalogo(params) {
-    alert ("Este es nuestro calatogo de productos: \n" + mediasAngoraMujer + "\n" + mediasAngoraHombre + "\n" + mediasAngoraBaby + "\n" + saquitoCrochet );
+    alert ("Este es nuestro calatogo de productos: \n" + mediasAngoraMujer + "\n" + mediasAngoraHombre + "\n" + mediasAngoraBaby );
 
 for (let index = 0; index < arrayCatalogo.length; index++) {
     alert ("Te ofrecemos " + arrayCatalogo[index]);
@@ -47,23 +48,30 @@ mostrarCatalogo ();
 
 function addToCart(params) {
     let chosenProduct = prompt ("Elige un producto");
-    if (chosenProduct != null) {
-        arrayCarrito.push (chosenProduct);
-        //pushear producto a arrayCarrito
-        alert (chosenProduct + " se ha agregado a tu carrito!");
-    } else {
-        alert ("Sigue mirando otros productos!")
-    }
-}
-addToCart ();
 
-/* if (chosenProduct1 != null) {
-    arrayCarrito.push (chosenProduct1);
-    //pushear producto a arrayCarrito
-    alert (chosenProduct1 + " se ha agregado a tu carrito!");
-} else {
-    alert ("Gracias por visitar Baradero Knits! \nTe esperamos de nuevo pronto!");
-} */
+    switch (chosenProduct) {
+        case ("M1"):
+            arrayCarrito.push (mediasAngoraMujer);
+        //pushear producto a arrayCarrito
+            alert ("Medias Angora Mujer se han agregado a tu carrito!");
+            break;
+        case ("M2"):
+            arrayCarrito.push (mediasAngoraHombre);
+            //pushear producto a arrayCarrito
+            alert ("Medias Angora Hombre se han agregado a tu carrito!");
+            break;    
+        case ("M3"):
+            arrayCarrito.push (mediasAngoraBaby);
+            //pushear producto a arrayCarrito
+            alert ("Medias Angora Baby se ha agregado a tu carrito!");
+            break;
+        default:
+            alert ("Sigue mirando otros productos!")
+            break;
+    }
+ }
+ 
+ addToCart ();
 
 // 4 - OFRECER PROMO
 
@@ -101,10 +109,16 @@ for (let index = 0; index < arrayCarrito.length; index++) {
 
 
 
-function sumar(params) {
-    totalCompra = ( chosenProduct1+ chosenProduct2 );
+function sumarTotal(params) {
+    /* totalCompra = ( chosenProduct1+ chosenProduct2 ); */
 }
 
+function sumarTotalCompra(params) {
+    let totalCompra = 0;
+    for (const chosenProduct of arrayCarrito) {
+        totalCompra += chosenProduct.precio 
+    }
+}
 
 
 function mostrarTotalCompra(params) {
