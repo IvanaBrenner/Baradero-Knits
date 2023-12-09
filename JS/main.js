@@ -30,15 +30,19 @@ const arrayCarrito = [];
 
 // 1 - MOSTRAR CATALOGO AL USUARIO
 
-function mostrarCatalogo(params) {
-    alert ("Este es nuestro calatogo de productos: \n" + mediasAngoraMujer + "\n" + mediasAngoraHombre + "\n" + mediasAngoraBaby );
 
-for (let index = 0; index < arrayCatalogo.length; index++) {
-    alert ("Te ofrecemos " + arrayCatalogo[index]);
-}
+
+function mostrarCatalogo(params) {
+    alert ("Este es nuestro calatogo de productos: \n M1: Medias Angora Mujer \n M2: Medias Angora Hombre \n M3: Medias Angora Baby");
+
+    for(productos of arrayCatalogo){
+        alert ("Te ofrecemos " + productos.nombre);
+    }
 }
 
 mostrarCatalogo ();
+
+
 
 // 2 - INVITACION A ELEGIR PRODUCTOS
 
@@ -92,26 +96,28 @@ if (chosenProduct2 != null) {
 // 5 - GO TO CART (MOSTRAR CARRITO)
 
 function mostrarCarrito(params) {
-    for (let index = 0; index < arrayCarrito.length; index++) {
-        alert ("Tienes en tu carrito " + arrayCarrito[index]);
-    }
+        for(productos of arrayCarrito){
+            alert ("Tienes en tu carrito " + productos.nombre);
+        }
+    
 }
-
 mostrarCarrito ();
+
+// Me esta mostrando el carrito dos veces, por que??
 
 // 6 - SUMAR / MOSTRAR TOTAL DE LA COMPRA
 
 let totalCompra;
 
-for (let index = 0; index < arrayCarrito.length; index++) {
+/* for (let index = 0; index < arrayCarrito.length; index++) {
     alert ("El total de tu compra es" + (arrayCarrito[index].precio));
 }
 
 
 
 function sumarTotal(params) {
-    /* totalCompra = ( chosenProduct1+ chosenProduct2 ); */
-}
+    /* totalCompra = ( chosenProduct1+ chosenProduct2 ); 
+} */
 
 function sumarTotalCompra(params) {
     let totalCompra = 0;
@@ -120,12 +126,13 @@ function sumarTotalCompra(params) {
     }
 }
 
+sumarTotalCompra ();
 
 function mostrarTotalCompra(params) {
     alert ("El total de tu compra es " + totalCompra);
 }
 
-
+mostrarTotalCompra ();
 
 // 7 - REALIZAR LA TRANSACCION
 
