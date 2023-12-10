@@ -1,15 +1,15 @@
-console.log ("Baradero Knits Test");
+// OBJETOS Y ARRAYS
 
 const mediasAngoraMujer = {
     nombre: "Medias Angora Mujer",
-    id: "M1",
+    id: 1,
     categoria: "Medias",
     precio: 50,
     color: "beige",
 }
 const mediasAngoraHombre = {
     nombre: "Medias Angora Hombre",
-    id: "M2",
+    id: 2,
     categoria: "Medias",
     precio: 45,
     color: "beige",
@@ -17,55 +17,40 @@ const mediasAngoraHombre = {
 
 const mediasAngoraBaby = {
     nombre: "Medias Angora Baby",
-    id: "M3",
+    id: 3,
     categoria: "Medias",
     precio: 35,
     color: "beige",
 }
-
  
 const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby];
 const arrayCarrito = [];
 
-
-// 1 - MOSTRAR CATALOGO AL USUARIO
-
-
+// FUNCIONES
 
 function mostrarCatalogo(params) {
-    alert ("Este es nuestro calatogo de productos: \n M1: Medias Angora Mujer \n M2: Medias Angora Hombre \n M3: Medias Angora Baby");
-
+    
     for(productos of arrayCatalogo){
-        alert ("Te ofrecemos " + productos.nombre);
+        alert ("Te ofrecemos " + productos.nombre + " a $" + productos.precio);
     }
 }
 
-mostrarCatalogo ();
-
-
-
-// 2 - INVITACION A ELEGIR PRODUCTOS
-
-/* let chosenProduct1 = prompt ("Elige un producto"); */
-
-// 3 - AGREGAR PRODUCTO AL CARRITO
-
 function addToCart(params) {
-    let chosenProduct = prompt ("Elige un producto");
+    let chosenProduct = parseInt (prompt ("Elige un producto"));
 
     switch (chosenProduct) {
-        case ("M1"):
-            arrayCarrito.push (mediasAngoraMujer);
+        case 1:
+            arrayCarrito.push (arrayCatalogo[chosenProduct - 1]);
         //pushear producto a arrayCarrito
             alert ("Medias Angora Mujer se han agregado a tu carrito!");
             break;
-        case ("M2"):
-            arrayCarrito.push (mediasAngoraHombre);
+        case 2:
+            arrayCarrito.push (arrayCatalogo[chosenProduct - 1]);
             //pushear producto a arrayCarrito
             alert ("Medias Angora Hombre se han agregado a tu carrito!");
             break;    
-        case ("M3"):
-            arrayCarrito.push (mediasAngoraBaby);
+        case 3:
+            arrayCarrito.push (arrayCatalogo[chosenProduct - 1]);
             //pushear producto a arrayCarrito
             alert ("Medias Angora Baby se ha agregado a tu carrito!");
             break;
@@ -74,76 +59,72 @@ function addToCart(params) {
             break;
     }
  }
- 
- addToCart ();
-
-// 4 - OFRECER PROMO
-
-alert ("Si llevas dos productos, tienes un 10% de descuento sobre el segundo producto");
-
-addToCart ();
-
-/* let chosenProduct2 = prompt ("Si quieres aprovechar la promo, elige otro producto, si no, presiona cancel");
-
-if (chosenProduct2 != null) {
-    arrayCarrito.push (chosenProduct2);
-    alert (chosenProduct2 + " se ha agregado a tu carrito!");
-    //pushear segundo producto a arrayCarrito
-} else {
-    confirm ("Ir al carrito")
-} */
-
-// 5 - GO TO CART (MOSTRAR CARRITO)
 
 function mostrarCarrito(params) {
-        for(productos of arrayCarrito){
-            alert ("Tienes en tu carrito " + productos.nombre);
-        }
-    
-}
-mostrarCarrito ();
-
-// Me esta mostrando el carrito dos veces, por que??
-
-// 6 - SUMAR / MOSTRAR TOTAL DE LA COMPRA
-
-let totalCompra;
-
-/* for (let index = 0; index < arrayCarrito.length; index++) {
-    alert ("El total de tu compra es" + (arrayCarrito[index].precio));
-}
-
-
-
-function sumarTotal(params) {
-    /* totalCompra = ( chosenProduct1+ chosenProduct2 ); 
-} */
-
-function sumarTotalCompra(params) {
-    let totalCompra = 0;
-    for (const chosenProduct of arrayCarrito) {
-        totalCompra += chosenProduct.precio 
+    for(productos of arrayCarrito){
+        alert ("Tienes en tu carrito " + productos.nombre);
     }
+
 }
-
-sumarTotalCompra ();
-
+/* Sumar*/
+let total;
+function sumarTotalCompra(params) {
+    total = 0;
+    for (const productos of arrayCarrito) {
+        total = total + productos.precio;
+    }
+} 
+/* Mostrar total*/
 function mostrarTotalCompra(params) {
-    alert ("El total de tu compra es " + totalCompra);
+    alert ("El total de tu compra es $" + total);
 }
 
-mostrarTotalCompra ();
-
-// 7 - REALIZAR LA TRANSACCION
-
-let transaccionCompleta = confirm ("Desear confirmar tu compra?");
 
 
-if (transaccionCompleta) {
-    alert ("Muchas gracias por tu compra!")
-} else {
-    alert ("Tu compra ha sido cancelada");
-}
+// INICIO
+do {
+    opcionElegida = parseInt (prompt ("Bienvenidx a Baradero Knits!\n Por favor selecciona una de las siguientes opciones:\n 1) Ver nuestro catalogo \n 2) Agregar un producto a tu carrito \n 3) Ver tu carrito \n 4) Checkout \n \n Para salir ingresa 0"))
+    switch (opcionElegida) {
+        case 0:
+            // SALIR
+            alert ("Gracias por visitar Baradero Knits, te esperamos de nuevo pronto!");
+            break;
+
+        case 1:
+            // 1 - MOSTRAR CATALOGO AL USUARIO
+            mostrarCatalogo ();
+            break;
+
+        case 2:
+            // 2 - AGREGAR PRODUCTO AL CARRITO
+            alert ("Para agregar un producto a tu carrito ingresa: \n 1 para Medias Angora Mujer \n 2 para Medias Angora Hombre \n 3 para Medias Angora Baby");
+            addToCart ();
+            break;
+
+        case 3:
+            // 3 - GO TO CART (MOSTRAR CARRITO)
+            mostrarCarrito ();
+            break; 
+            
+        case 4:
+            // 4 - CHECKOUT
+            sumarTotalCompra ();
+            mostrarTotalCompra ();
+            // 4b - REALIZAR LA TRANSACCION
+            let transaccionCompleta = confirm ("Desear confirmar tu compra?");
+            if (transaccionCompleta) {
+                alert ("Transaccion completa.\nMuchas gracias por tu compra!")
+            } else {
+                alert ("Tu compra ha sido cancelada");
+            } 
+            break;
+    
+        default:
+            alert ("La opcion que ingresaste no es valida. Por favor ingresa una opcion valida")
+            break;
+    }
+    
+} while (opcionElegida !== 0);
 
 
 
