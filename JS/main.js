@@ -28,6 +28,7 @@ const arrayCarrito = [];
 
 // FUNCIONES
 
+/* Funcion Mostrar Catalogo*/
 function mostrarCatalogo(params) {
     
     for(productos of arrayCatalogo){
@@ -35,6 +36,7 @@ function mostrarCatalogo(params) {
     }
 }
 
+/* Funcion Add to Cart*/
 function addToCart(params) {
     let chosenProduct = parseInt (prompt ("Elige un producto"));
 
@@ -60,13 +62,14 @@ function addToCart(params) {
     }
  }
 
+/* Funcion Mostrar Carrito*/ 
 function mostrarCarrito(params) {
     for(productos of arrayCarrito){
         alert ("Tienes en tu carrito " + productos.nombre);
     }
 
 }
-/* Sumar*/
+/* Funcion Sumar*/
 let total;
 function sumarTotalCompra(params) {
     total = 0;
@@ -74,7 +77,7 @@ function sumarTotalCompra(params) {
         total = total + productos.precio;
     }
 } 
-/* Mostrar total*/
+/* Funcion Mostrar total*/
 function mostrarTotalCompra(params) {
     alert ("El total de tu compra es $" + total);
 }
