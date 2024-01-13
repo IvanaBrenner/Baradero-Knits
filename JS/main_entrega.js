@@ -45,6 +45,20 @@ console.log (saquitoCrochet);
 
 console.log (saquitoCrochet.nombre, saquitoCrochet.categoria, saquitoCrochet.precio)
 
+function crearNuevoProducto(params) {
+    const nombreProducto = prompt ("Ingrese el nombre del producto");
+    const idProducto = prompt ("Ingrese el id del producto");
+    const categoriaProducto = prompt ("Ingrese la categoria del producto");
+    const precioProducto = prompt ("Ingrese el precio del producto");
+    const colorProducto = prompt ("Ingrese el color del producto");
+
+    const nuevoProducto = new Producto (nombreProducto, idProducto, categoriaProducto, precioProducto, colorProducto); 
+    return nuevoProducto; 
+} 
+
+const sweater = crearNuevoProducto (); 
+console.log (sweater);
+
  // Fin del test
 
 

@@ -1,5 +1,7 @@
 //DOM
 
+// Body
+// Header
 header.innerHTML = `
 <h1>Baradero Knits</h1>
 <div>
@@ -13,12 +15,26 @@ divPrueba.innerHTML = "Hola";
 // for ech min 38
 // appenchild y crear elementos minudo 43:41
 // appenchild con objetos minuto 50
+// variable flag minuto 1:09
+// on click minuto 1:13
 
 const etiquetaP = document.createElement ("p");
 etiquetaP.innerText = "prueba";
 divPrueba.appendChild(etiquetaP);
 
+
+// Main
 sectionProductos.className = "sectionProductosClase";
+
+const button = document.createElement("button");
+button.innerText = "Click Here"
+document.body.appendChild(button);
+
+button.addEventListener("click", () => {
+    alert("Hiciste click");
+});
+
+// Footer
 
 /* 
 NO FUNCIONA CREAR DIV
@@ -28,7 +44,7 @@ sectionProductos.appendChild(divProductos); */
 
 
 
-// OBJETOS Y ARRAYS
+// OBJETOS 
 
 const mediasAngoraMujer = {
     nombre: "Medias Angora Mujer",
@@ -53,53 +69,15 @@ const mediasAngoraBaby = {
     color: "beige",
 }
 
-// Test Clase constructora
-
-/*
-class Producto {
-    constructor (nombre, id, categoria, precio, color) {
-        this.nombre = nombre
-        this.id = id
-        this.categoria = categoria
-        this.precio = precio
-        this.color = color
-    } 
-    // Metodo del objeto
-    presentar () {
-        console.log ("El nuevo producto es un" , this.nombre , "y lo vendemos a $" , this.precio )
-    }
-    
-}
-
-const saquitoCrochet = new Producto ("Saquito Crochet", 4, "clothes", 250, "rojo" )
-
-saquitoCrochet.presentar ()
-console.log (saquitoCrochet);
-
-console.log (saquitoCrochet.nombre, saquitoCrochet.categoria, saquitoCrochet.precio)
-
-
-function crearNuevoProducto(params) {
-    const nombreProducto = prompt ("Ingrese el nombre del producto");
-    const idProducto = prompt ("Ingrese el id del producto");
-    const categoriaProducto = prompt ("Ingrese la categoria del producto");
-    const precioProducto = prompt ("Ingrese el precio del producto");
-    const colorProducto = prompt ("Ingrese el color del producto");
-
-    const nuevoProducto = new Producto (nombreProducto, idProducto, categoriaProducto, precioProducto, colorProducto); 
-    return nuevoProducto; 
-} 
-
-const sweater = crearNuevoProducto (); 
-console.log (sweater);
-*/
-
- // Fin del test
+// ARRAYS
 
  const arrayCatalogo = [mediasAngoraMujer, mediasAngoraHombre, mediasAngoraBaby];
  const arrayCarrito = [];
  localStorage.setItem ("CarritoStorageInicial" , JSON.stringify(arrayCarrito));
 
+
+
+// CARDS 
 arrayCatalogo.forEach (el => {
     const newCard = document.createElement ("div");
     newCard.className = "cardProducto"; 
@@ -107,7 +85,15 @@ arrayCatalogo.forEach (el => {
     <p>${el.nombre}</p>
     <p>$${el.precio}</p>
     <p>${el.color}</p>
-    `;
+    `
+    const button = document.createElement ("button");
+    button.innerText = "Agregar";
+    button.addEventListener("click", () => {
+        alert(`${el.nombre} added to carrito`);
+    });
+    newCard.appendChild (button);
+    ;
+    newCard.onclick = () => alert (`${el.nombre} added to cart`);
     sectionProductos.appendChild(newCard);
 });
 
@@ -192,19 +178,6 @@ function sumarTotalCompra(params) {
             alert ("El total de tu compra es $" + totalReduce);
 }
 
-//let total = arrayCarrito.reduce ((acumulador, elemento) => acumulador + elemento.precio, 0);
-
-/*
-let total = 0;
-            arrayCarrito.forEach(el => total += el.precio);
-            mostrarTotalCompra (); */
-
-//>>> sumar con reduce, video en 1:20
-
-/* Funcion Mostrar total
-function mostrarTotalCompra(params) {
-    alert ("El total de tu compra es $" + totalReduce);
-}*/
 
 // Puedo agregar funcion de remover producto del carrito con un filter. ver minuto 0:57
 
