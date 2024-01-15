@@ -7,6 +7,7 @@ const mediasAngoraMujer = {
     precio: 50,
     color: "beige",
     img: "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+    cantidad: 1,
 }
 const mediasAngoraHombre = {
     nombre: "Medias Angora Hombre",
@@ -15,6 +16,7 @@ const mediasAngoraHombre = {
     precio: 45,
     color: "beige",
     img: "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+    cantidad: 1,
 }
 
 const mediasAngoraBaby = {
@@ -24,6 +26,7 @@ const mediasAngoraBaby = {
     precio: 35,
     color: "beige",
     img: "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+    cantidad: 1,
 }
 
 // ARRAYS
@@ -40,13 +43,13 @@ function completarCompra(params) {
     let transaccionCompleta = confirm ("Desear confirmar tu compra?");
     if (transaccionCompleta) {
     alert ("Transaccion completa.\nMuchas gracias por tu compra!")
+    localStorage.clear ();
     } else {
     alert ("Tu compra ha sido cancelada");
     }
-}
+    }
 
- //>>> ver 1:02 para agregar dos de lo mismo al carrito
-
+ 
  //Funcion guardar en local storage
 
  function guardarEnLocalStorage(params) {
@@ -55,27 +58,29 @@ function completarCompra(params) {
 
  // Funcion mostrar carrito
 
- function mostrarCarrito(params) {
+function mostrarCarrito(params) {
         for(productos of arrayCarrito){
             alert ("Tienes en tu carrito " + productos.nombre);
     }
     }
 
- /* NO FUNCIONA
-   function mostrarCarrito(params) {
-    if ((arrayCarrito = []) ) {
-        alert ("Tu carrito esta vacio");
-    } else {
-        for(productos of arrayCarrito){
-            alert ("Tienes en tu carrito " + productos.nombre);
-        }
-    }
-    
- } */
+// Funcion Sumar (no funciona cuando la pongo dentro del event listener como funcion)
 
+/* function sumarTotalCompra(params) {
+    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + actual.precio, 0);
+            alert ("El total de tu compra es $" + totalReduce);
+} */
+
+
+// Funcion validar (chiste empanadas del whatsapp)
+/* const validar = arrayCarrito.some (el => el.id === 1);
+console.log (validar); */
+//>>> ver 1:02 para agregar dos de lo mismo al carrito
 
 
 // Puedo agregar funcion de remover producto del carrito con un filter. ver minuto 0:57
+
+
 
 
 //DOM
@@ -108,8 +113,8 @@ arrayCatalogo.forEach (el => {
     button.innerText = "Agregar";
     button.addEventListener("click", () => {
         arrayCarrito.push (el);
-            alert (`${el.nombre} se han agregado a tu carrito!`);   
-            //localStorage.setItem ("CarritoStorage", JSON.stringify(arrayCarrito));   
+        alert (`${el.nombre} se han agregado a tu carrito!`);   
+        //localStorage.setItem ("CarritoStorage", JSON.stringify(arrayCarrito));   
         guardarEnLocalStorage ();  
     });
 
@@ -119,6 +124,7 @@ arrayCatalogo.forEach (el => {
 });
 
 
+
 // IR AL CARRITO
 const sectionCarrito = document.getElementById ("sectionCarrito");
 sectionCarrito.className = "sectionCarritoClase";
@@ -126,13 +132,17 @@ sectionCarrito.className = "sectionCarritoClase";
 const buttonVerCarrito = document.createElement ("button");
 buttonVerCarrito.innerText = "Ver Carrito";
 buttonVerCarrito.addEventListener ("click", () => {
-    /* for(productos of arrayCarrito){
+    /* 
+    Esto cuando lo hago asi no funciona:
+    for(productos of arrayCarrito){
         alert ("Tienes en tu carrito " + productos.nombre);
     } */
     mostrarCarrito ();
 });
 
 sectionCarrito.appendChild(buttonVerCarrito);
+// Me falta hacer in if para cuando el carrito esta vacio que me de una alerta. Trate y no funciono!
+
 
 // CHECKOUT
 const sectionCheckout = document.getElementById ("sectionCheckout");
@@ -141,7 +151,7 @@ sectionCheckout.className = "sectionCheckoutClase";
 const buttonCheckout = document.createElement ("button");
 buttonCheckout.innerText = "Check Out";
 buttonCheckout.addEventListener ("click", () => {
-    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + actual.precio, 0);
+    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);
     alert ("El total de tu compra es $" + totalReduce);
     completarCompra ();
 });
@@ -149,21 +159,13 @@ buttonCheckout.addEventListener ("click", () => {
 sectionCheckout.appendChild(buttonCheckout);
 
 
-/* function sumarTotalCompra(params) {
-    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + actual.precio, 0);
-            alert ("El total de tu compra es $" + totalReduce);
-} */
-
 // Footer
 
-/* 
-NO FUNCIONA CREAR DIV
-const divProductos = document.createElement ("div");
-divProductos.innerHTML = "div";
-sectionProductos.appendChild(divProductos); */
+// FALTA
 
-// EVENTOS
+// Arreglar el tema de las cantidades
+// Poder editar el carrito
+// Alerta si el carrito esta vacio
 
-// Agregar un boton de check ou
 
 
