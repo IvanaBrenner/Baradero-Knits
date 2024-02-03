@@ -95,9 +95,6 @@ sectionCheckout.appendChild(buttonCheckout);
 
 // FALTA
 
-// Poder editar el carrito
-// Alerta si el carrito esta vacio
-
 // pueden aparecer cards para mostrar carrito con botones de editar, con un for each
 // boton para sumar cantidad y boton para restar cantidad, boton para eliminar producto
 
