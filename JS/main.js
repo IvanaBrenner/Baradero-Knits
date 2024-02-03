@@ -29,15 +29,14 @@ fetch("./JS/productos.json")
         const newCard = document.createElement ("div");
         newCard.className = "cardProducto"; 
         newCard.innerHTML = `
-        <p>${el.nombre}</p>
-        <p>$${el.precio}</p>
-        <p>${el.color}</p>
+        <p>${el.nombre}<br>$${el.precio}<br>${el.color}</p>
         `
         const imgProducto = document.createElement ("img");
         imgProducto.className = "fotoProducto";
         imgProducto.src = el.img;
     
         const buttonAgregar = document.createElement ("button");
+        buttonAgregar.className = "boton-light";
         buttonAgregar.innerText = "Agregar al carrito";
         buttonAgregar.addEventListener("click", () => {
             agregarAlCarrito (el.id);  
@@ -45,9 +44,9 @@ fetch("./JS/productos.json")
         });
 
         const buttonEliminar = document.createElement ("button");
+        buttonEliminar.className = "boton-light";
         buttonEliminar.innerText = "Eliminar del carrito";
-        //buttonEliminar.onclick = () => elminarDelCarrito (el.id);
-       buttonEliminar.addEventListener ("click", () => {
+        buttonEliminar.addEventListener ("click", () => {
             elminarDelCarrito (el.id);
             guardarEnLocalStorage ();
         }) 
@@ -67,6 +66,7 @@ const sectionCarrito = document.getElementById ("sectionCarrito");
 sectionCarrito.className = "sectionCarritoClase";
 
 const buttonVerCarrito = document.createElement ("button");
+buttonVerCarrito.className = "boton";
 buttonVerCarrito.innerText = "Ver Carrito";
 buttonVerCarrito.addEventListener ("click", () => {
     mostrarCarrito ();
@@ -81,6 +81,7 @@ const sectionCheckout = document.getElementById ("sectionCheckout");
 sectionCheckout.className = "sectionCheckoutClase";
 
 const buttonCheckout = document.createElement ("button");
+buttonCheckout.className = "boton";
 buttonCheckout.innerText = "Check Out";
 buttonCheckout.addEventListener ("click", () => {
     let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);

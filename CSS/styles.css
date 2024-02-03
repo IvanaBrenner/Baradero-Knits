@@ -1,7 +1,22 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    font-family: 'Garamond', 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+
+
 .sectionProductosClase {
     display: flex;
     flex-direction: row;
-
+    justify-items: center;
+    justify-content: space-evenly;
 }
 
 
@@ -9,16 +24,45 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    height: 10rem;
-    width: 10rem;
+    height: 25rem;
+    width: 15rem;
     border: solid 1px black;
     border-radius: 0.5rem;
     padding: 1rem;
-    margin: 1rem;
-    background-color: ivory;
+    margin: 3rem; 
+    background-color:rgb(249, 239, 228);
 }
 
 .fotoProducto {
     width: 10rem;
     height: 10rem;
+    border-radius: 0.5rem;
+}
+
+.boton {
+    border-radius: 0.5rem;
+    background-color: rgb(174, 135, 92);
+}
+
+.boton-light {
+    border-radius: 0.5rem;
+    background-color: rgb(249, 239, 228);
+    border-color: black;
+}
+
+.sectionCarritoClase {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+}
+
+.sectionCheckoutClase {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
 }

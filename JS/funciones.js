@@ -6,12 +6,18 @@ function agregarAlCarrito(id) {
     const productoAgregado = arrayCatalogoPushaeado.find (el => el.id === id)
 
     if (!arrayCarrito.some (el => el.id === id)) {
-        arrayCarrito.push (productoAgregado)
-        alert (`${productoAgregado.nombre} se han agregado a tu carrito!`);   
+        arrayCarrito.push (productoAgregado);
+        Toastify({
+            text: `${productoAgregado.nombre} se han agregado a tu carrito!`,
+            duration: 3000
+            }).showToast();  
     } else {
        arrayCarrito.find (el => el.id === productoAgregado.id);
        productoAgregado.cantidad = productoAgregado.cantidad + 1;
-       alert (`Otro par de ${productoAgregado.nombre} se ha agregado a tu carrito!`); 
+       Toastify({
+        text: `Otro par de ${productoAgregado.nombre} se ha agregado a tu carrito!`,
+        duration: 3000 
+        }).showToast();
     } 
 }
 
@@ -21,18 +27,26 @@ function elminarDelCarrito(id) {
     const productoAgregado = arrayCatalogoPushaeado.find (el => el.id === id)
 
     if (!arrayCarrito.some (el => el.id === id)) {
-        alert (`Aun no tienes ${productoAgregado.nombre} en tu carrito!`);   
+        Toastify({
+            text: `Aun no tienes ${productoAgregado.nombre} en tu carrito!`,
+            duration: 3000 
+            }).showToast();   
     } else if ((arrayCarrito.some (el => el.id === id)) && (productoAgregado.cantidad > 1)) {
        arrayCarrito.find (el => el.id === productoAgregado.id);
        productoAgregado.cantidad = productoAgregado.cantidad - 1;
-       alert (`Un par de ${productoAgregado.nombre} se ha eliminado de tu carrito!`); 
+       Toastify({
+        text: `Un par de ${productoAgregado.nombre} se ha eliminado de tu carrito!`,
+        duration: 3000
+        }).showToast();
     } else {
         arrayCarrito = arrayCarrito.filter (el => el.id !== productoAgregado.id);
-        alert(`${productoAgregado.nombre} ha sido eliminado de tu carrito`);
+        Toastify({
+            text: `${productoAgregado.nombre} ha sido eliminado de tu carrito`,
+            duration: 3000
+            }).showToast();
     }
 }
 
-// hacer alertas con toastify minuto 1:30:00
 // minuto 1:17:00 cambiar nombre boton
 
 
@@ -51,7 +65,10 @@ function elminarDelCarrito(id) {
             alert ("Tienes en tu carrito " + productos.cantidad + " " + productos.nombre);
     }
     } else {
-        alert ("Tu carrito esta vacio!");
+        Toastify({
+            text: "Tu carrito esta vacio!",
+            duration: 3000
+            }).showToast();
     }
 }
  
@@ -62,11 +79,20 @@ function elminarDelCarrito(id) {
 function completarCompra(params) {
     let transaccionCompleta = confirm ("Desear confirmar tu compra?");
     if (transaccionCompleta) {
-    alert ("Transaccion completa.\nMuchas gracias por tu compra!");
+        Toastify({
+
+            text: "Transaccion completa.\nMuchas gracias por tu compra!",
+            
+            duration: 3000
+            
+            }).showToast();
     arrayCarrito = [];
     localStorage.clear ();
     } else {
-    alert ("Tu compra ha sido cancelada");
+        Toastify({
+            text: "Tu compra ha sido cancelada",
+            duration: 3000
+            }).showToast();
     }
     }
 

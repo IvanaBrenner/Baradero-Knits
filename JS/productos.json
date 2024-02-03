@@ -4,8 +4,8 @@
     "id": 1,
     "categoria": "Medias",
     "precio": 50,
-    "color": "beige",
-    "img": "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+    "color": "Beige",
+    "img": "../IMG/medias_mujer.jpg",
     "cantidad": 1
     },
     {
@@ -13,8 +13,8 @@
         "id": 2,
         "categoria": "Medias",
         "precio": 45,
-        "color": "beige",
-        "img": "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+        "color": "Beige",
+        "img": "../IMG/medias_hombre.jpg",
         "cantidad": 1
     },
     {
@@ -22,8 +22,8 @@
         "id": 3,
         "categoria": "Medias",
         "precio": 35,
-        "color": "beige",
-        "img": "https://i.pinimg.com/564x/36/e2/8f/36e28ff895fc0f7578dbd1ac985d9ee3.jpg",
+        "color": "Beige",
+        "img": "../IMG/medias_baby.jpg",
         "cantidad": 1
     }
 ]
