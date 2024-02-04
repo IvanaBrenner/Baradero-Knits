@@ -66,14 +66,13 @@ const sectionCarrito = document.getElementById ("sectionCarrito");
 sectionCarrito.className = "sectionCarritoClase";
 
 const buttonVerCarrito = document.createElement ("button");
-buttonVerCarrito.className = "boton";
+buttonVerCarrito.className = "boton-carrito";
 buttonVerCarrito.innerText = "Ver Carrito";
 buttonVerCarrito.addEventListener ("click", () => {
     mostrarCarrito ();
 });
 
 sectionCarrito.appendChild(buttonVerCarrito);
-// Me falta hacer in if para cuando el carrito esta vacio que me de una alerta. Trate y no funciono!
 
 
 // CHECKOUT
@@ -84,8 +83,7 @@ const buttonCheckout = document.createElement ("button");
 buttonCheckout.className = "boton";
 buttonCheckout.innerText = "Check Out";
 buttonCheckout.addEventListener ("click", () => {
-    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);
-    alert ("El total de tu compra es $" + totalReduce);
+    //let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);
     completarCompra ();
 });
 
@@ -94,9 +92,5 @@ sectionCheckout.appendChild(buttonCheckout);
 
 // Footer
 
-// FALTA
-
-// pueden aparecer cards para mostrar carrito con botones de editar, con un for each
-// boton para sumar cantidad y boton para restar cantidad, boton para eliminar producto
 
 

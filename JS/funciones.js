@@ -60,14 +60,75 @@ function elminarDelCarrito(id) {
  // Funcion mostrar carrito
 
  function mostrarCarrito() {
+
     if (arrayCarrito.length > 0) {
-        for(productos of arrayCarrito){
-            alert ("Tienes en tu carrito " + productos.cantidad + " " + productos.nombre);
+
+        let carritoDisplay = ""
+        for (const productos of arrayCarrito) {
+        carritoDisplay += `\n${productos.cantidad} pares de ${productos.nombre}`
     }
+
+        Toastify({
+            text: "Hay en tu carrito" + carritoDisplay,
+            duration: 3000,   
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+              background: "linear-gradient(to right, #00b09b, #b00055)",
+            },
+            offset: {
+                x: 100, 
+                y: 50 
+              },
+              onClick: function(){} 
+            }).showToast();
+
+
+    /*     for(productos of arrayCarrito){
+            Toastify({
+                text: "Tienes en tu carrito " + productos.cantidad + " " + productos.nombre,
+                duration: 3000   
+                }).showToast();
+    } 
+ */
+
+
+
+    /* arrayCarrito.forEach (el => {
+        const newCardCarrito = document.createElement ("div");
+        newCardCarrito.className = "cardCarrito";
+        newCardCarrito.innerHTML = `
+        <p>${el.cantidad} ${el.nombre}</p>
+        `
+        sectionCarrito.appendChild(newCardCarrito);
+    }
+    )
+    const totalItems = document.createElement ("div");
+    totalItems.className = "cardTotalItems";
+    totalItems.innerHTML = `
+    <p>Total ${arrayCarrito.length} items</p>
+    `;
+    sectionCarrito.appendChild (totalItems); */
     } else {
         Toastify({
             text: "Tu carrito esta vacio!",
-            duration: 3000
+            duration: 10000,
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+              background: "linear-gradient(to right, #00b09b, #b00055)",
+            },
+            offset: {
+                x: 100, 
+                y: 50 
+              },
+            onClick: function(){} 
             }).showToast();
     }
 }
@@ -77,14 +138,51 @@ function elminarDelCarrito(id) {
 //Funcion Completar Compra
 
 function completarCompra(params) {
-    let transaccionCompleta = confirm ("Desear confirmar tu compra?");
+
+    let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success boton-swal",
+          cancelButton: "btn btn-danger boton-swal-cancel"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Deseas confirmar tu compra?",
+        text: `El total de tu compra es $${totalReduce}`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Confirmar compra",
+        cancelButtonText: "Cancelar",
+        background: "rgb(253, 248, 242)",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Transaccion completa",
+            text: "Muchas gracias por tu compra!",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Tu compra ha sido cancelada",
+            text: "Puedes seguir mirando medias :)",
+          });
+        }
+      });
+
+
+
+
+
+    /* let transaccionCompleta = confirm ("Deseas confirmar tu compra?");
     if (transaccionCompleta) {
         Toastify({
-
             text: "Transaccion completa.\nMuchas gracias por tu compra!",
-            
             duration: 3000
-            
             }).showToast();
     arrayCarrito = [];
     localStorage.clear ();
@@ -93,6 +191,6 @@ function completarCompra(params) {
             text: "Tu compra ha sido cancelada",
             duration: 3000
             }).showToast();
-    }
+    } */
     }
 
