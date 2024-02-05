@@ -5,7 +5,7 @@
     "categoria": "Medias",
     "precio": 50,
     "color": "Beige",
-    "img": "../IMG/medias_mujer.jpg",
+    "img": "./IMG/medias_mujer.jpg",
     "cantidad": 1
     },
     {
@@ -14,7 +14,7 @@
         "categoria": "Medias",
         "precio": 45,
         "color": "Beige",
-        "img": "../IMG/medias_hombre.jpg",
+        "img": "./IMG/medias_hombre.jpg",
         "cantidad": 1
     },
     {
@@ -23,7 +23,7 @@
         "categoria": "Medias",
         "precio": 35,
         "color": "Beige",
-        "img": "../IMG/medias_baby.jpg",
+        "img": "./IMG/medias_baby.jpg",
         "cantidad": 1
     }
 ]
