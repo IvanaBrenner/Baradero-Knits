@@ -9,14 +9,20 @@ function agregarAlCarrito(id) {
         arrayCarrito.push (productoAgregado);
         Toastify({
             text: `${productoAgregado.nombre} se han agregado a tu carrito!`,
-            duration: 3000
+            duration: 1000,
+            style: {
+                background: "linear-gradient(to right, #914899, #e7b2ed)",
+              },
             }).showToast();  
     } else {
        arrayCarrito.find (el => el.id === productoAgregado.id);
        productoAgregado.cantidad = productoAgregado.cantidad + 1;
        Toastify({
         text: `Otro par de ${productoAgregado.nombre} se ha agregado a tu carrito!`,
-        duration: 3000 
+        duration: 1000,
+        style: {
+            background: "linear-gradient(to right, #914899, #e7b2ed)",
+          }, 
         }).showToast();
     } 
 }
@@ -29,20 +35,29 @@ function elminarDelCarrito(id) {
     if (!arrayCarrito.some (el => el.id === id)) {
         Toastify({
             text: `Aun no tienes ${productoAgregado.nombre} en tu carrito!`,
-            duration: 3000 
+            duration: 1000,
+            style: {
+                background: "linear-gradient(to right, #4f662c, #bceb75)",
+              }, 
             }).showToast();   
     } else if ((arrayCarrito.some (el => el.id === id)) && (productoAgregado.cantidad > 1)) {
        arrayCarrito.find (el => el.id === productoAgregado.id);
        productoAgregado.cantidad = productoAgregado.cantidad - 1;
        Toastify({
         text: `Un par de ${productoAgregado.nombre} se ha eliminado de tu carrito!`,
-        duration: 3000
+        duration: 1000,
+        style: {
+            background: "linear-gradient(to right, #6a7194, #adb4db)",
+          },
         }).showToast();
     } else {
         arrayCarrito = arrayCarrito.filter (el => el.id !== productoAgregado.id);
         Toastify({
             text: `${productoAgregado.nombre} ha sido eliminado de tu carrito`,
-            duration: 3000
+            duration: 1000,
+            style: {
+                background: "linear-gradient(to right, #6a7194, #adb4db)",
+              },
             }).showToast();
     }
 }
@@ -65,11 +80,11 @@ function elminarDelCarrito(id) {
 
         let carritoDisplay = ""
         for (const productos of arrayCarrito) {
-        carritoDisplay += `\n${productos.cantidad} pares de ${productos.nombre}`
+        carritoDisplay += `\n${productos.cantidad} ${productos.nombre}`
     }
 
         Toastify({
-            text: "Hay en tu carrito" + carritoDisplay,
+            text: "Tienes en tu carrito" + carritoDisplay,
             duration: 3000,   
             newWindow: true,
             close: true,
@@ -77,7 +92,7 @@ function elminarDelCarrito(id) {
             position: "right", 
             stopOnFocus: true, 
             style: {
-              background: "linear-gradient(to right, #00b09b, #b00055)",
+              background: "linear-gradient(to right, #1c484d, #bae2e6)",
             },
             offset: {
                 x: 100, 
@@ -122,7 +137,7 @@ function elminarDelCarrito(id) {
             position: "right", 
             stopOnFocus: true, 
             style: {
-              background: "linear-gradient(to right, #00b09b, #b00055)",
+              background: "linear-gradient(to right, #1c484d, #bae2e6)",
             },
             offset: {
                 x: 100, 
@@ -163,8 +178,9 @@ function completarCompra(params) {
             text: "Muchas gracias por tu compra!",
             icon: "success"
           });
+          arrayCarrito = [];
+          localStorage.clear ();
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({
@@ -173,24 +189,5 @@ function completarCompra(params) {
           });
         }
       });
-
-
-
-
-
-    /* let transaccionCompleta = confirm ("Deseas confirmar tu compra?");
-    if (transaccionCompleta) {
-        Toastify({
-            text: "Transaccion completa.\nMuchas gracias por tu compra!",
-            duration: 3000
-            }).showToast();
-    arrayCarrito = [];
-    localStorage.clear ();
-    } else {
-        Toastify({
-            text: "Tu compra ha sido cancelada",
-            duration: 3000
-            }).showToast();
-    } */
     }
 

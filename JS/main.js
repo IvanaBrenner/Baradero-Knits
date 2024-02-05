@@ -66,7 +66,7 @@ const sectionCarrito = document.getElementById ("sectionCarrito");
 sectionCarrito.className = "sectionCarritoClase";
 
 const buttonVerCarrito = document.createElement ("button");
-buttonVerCarrito.className = "boton-carrito";
+buttonVerCarrito.className = "boton-carrito hover-scale";
 buttonVerCarrito.innerText = "Ver Carrito";
 buttonVerCarrito.addEventListener ("click", () => {
     mostrarCarrito ();
