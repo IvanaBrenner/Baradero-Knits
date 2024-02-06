@@ -83,7 +83,6 @@ const buttonCheckout = document.createElement ("button");
 buttonCheckout.className = "boton";
 buttonCheckout.innerText = "Check Out";
 buttonCheckout.addEventListener ("click", () => {
-    //let totalReduce = arrayCarrito.reduce((acumulador, actual) => acumulador + (actual.precio * actual.cantidad), 0);
     completarCompra ();
 });
 

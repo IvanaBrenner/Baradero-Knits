@@ -62,8 +62,6 @@ function elminarDelCarrito(id) {
     }
 }
 
-// minuto 1:17:00 cambiar nombre boton
-
 
  //Funcion guardar en local storage
 
@@ -81,7 +79,7 @@ function elminarDelCarrito(id) {
         let carritoDisplay = ""
         for (const productos of arrayCarrito) {
         carritoDisplay += `\n${productos.cantidad} ${productos.nombre}`
-    }
+        }
 
         Toastify({
             text: "Tienes en tu carrito" + carritoDisplay,
@@ -101,32 +99,6 @@ function elminarDelCarrito(id) {
               onClick: function(){} 
             }).showToast();
 
-
-    /*     for(productos of arrayCarrito){
-            Toastify({
-                text: "Tienes en tu carrito " + productos.cantidad + " " + productos.nombre,
-                duration: 3000   
-                }).showToast();
-    } 
- */
-
-
-
-    /* arrayCarrito.forEach (el => {
-        const newCardCarrito = document.createElement ("div");
-        newCardCarrito.className = "cardCarrito";
-        newCardCarrito.innerHTML = `
-        <p>${el.cantidad} ${el.nombre}</p>
-        `
-        sectionCarrito.appendChild(newCardCarrito);
-    }
-    )
-    const totalItems = document.createElement ("div");
-    totalItems.className = "cardTotalItems";
-    totalItems.innerHTML = `
-    <p>Total ${arrayCarrito.length} items</p>
-    `;
-    sectionCarrito.appendChild (totalItems); */
     } else {
         Toastify({
             text: "Tu carrito esta vacio!",
@@ -148,7 +120,6 @@ function elminarDelCarrito(id) {
     }
 }
  
-
 
 //Funcion Completar Compra
 
